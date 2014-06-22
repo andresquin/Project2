@@ -85,15 +85,12 @@
 85	+	#---------------------------------------------------------------------
 86	+	
 87	+	# Create a new table, finalDataNoActivityType without the activityType column
-88	+	finalDataNoActivityType = finalData[,names(finalData) != 'activityType'];
+88	+	finalData = finalData[,names(finalData) != 'activityType'];
 89	+	
-90	+	# Summarizing the finalDataNoActivityType table to include just the mean of each variable for each activity and each subject
-91	+	tidyData = aggregate(finalDataNoActivityType[,names(finalDataNoActivityType) != c('activityId','subjectId')],by=list(activityId=finalDataNoActivityType$activityId,subjectId = finalDataNoActivityType$subjectId),mean);
+90	+	tidyData = aggregate(finalData[,names(finalDataNoActivityType) != c('activityId','subjectId')],by=list(activityId=finalDataNoActivityType$activityId,subjectId = finalDataNoActivityType$subjectId),mean);
 92	+	
-93	+	# Merging the tidyData with activityType to include descriptive acitvity names
-94	+	tidyData = merge(tidyData,activityType,by='activityId',all.x=TRUE);
+93	+	tidyData = merge(tidyData,activityType,by='activityId',all.x=TRUE);
 95	+	
-96	+	# Export the tidyData set
-97	+	write.table(tidyData, './tidyData.txt',row.names=TRUE,sep='\t');
+96	+	write.table(tidyData, './tidyData.txt',row.names=TRUE,sep='\t');
 98	 	 No newline at end of file
 99	 	
