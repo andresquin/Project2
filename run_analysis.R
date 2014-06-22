@@ -5,11 +5,11 @@
 setwd("C:/Users/admin/Documents/project/UCI HAR Dataset")
 
 # Read  files
-features = read.table('./features.txt',header=FALSE); #imports features.txt
-activityType = read.table('./activity_labels.txt',header=FALSE); #imports activity_labels.txt
-subjectTrain = read.table('./train/subject_train.txt',header=FALSE); #imports subject_train.txt
-xTrain = read.table('./train/x_train.txt',header=FALSE); #imports x_train.txt
-yTrain = read.table('./train/y_train.txt',header=FALSE); #imports y_train.txt
+features = read.table('./features.txt',header=FALSE); 
+activityType = read.table('./activity_labels.txt',header=FALSE); 
+subjectTrain = read.table('./train/subject_train.txt',header=FALSE); 
+xTrain = read.table('./train/x_train.txt',header=FALSE);
+yTrain = read.table('./train/y_train.txt',header=FALSE);
 
 # Assigin  names to each column  the data imported above
 colnames(activityType) = c('activityId','activityType');
@@ -21,10 +21,9 @@ colnames(yTrain) = "activityId";
 trainingData = cbind(yTrain,subjectTrain,xTrain);
 
 # Read in the test data
-subjectTest = read.table('./test/subject_test.txt',header=FALSE); #imports subject_test.txt
-xTest = read.table('./test/x_test.txt',header=FALSE); #imports x_test.txt
-yTest = read.table('./test/y_test.txt',header=FALSE); #imports y_test.txt
-
+subjectTest = read.table('./test/subject_test.txt',header=FALSE);
+xTest = read.table('./test/x_test.txt',header=FALSE);
+yTest = read.table('./test/y_test.txt',header=FALSE);
 colnames(subjectTest) = "subjectId";
 colnames(xTest) = features[,2];
 colnames(yTest) = "activityId";
